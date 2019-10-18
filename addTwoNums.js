@@ -1,56 +1,47 @@
-/**
- * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
- * }
- */
-/**
- * @param {ListNode} l1
- * @param {ListNode} l2
- * @return {ListNode}
- */
+// /**
+//  * Definition for singly-linked list.
+//  * function ListNode(val) {
+//  *     this.val = val;
+//  *     this.next = null;
+//  * }
+//  */
+// /**
+//  * @param {ListNode} l1
+//  * @param {ListNode} l2
+//  * @return {ListNode}
+//  */
 
 function ListNode(val) {
     this.val = val;
     this.next = null;
 }
 var addTwoNumbers = function(l1, l2) {
-  let head;
-  const addCur = (node1, node2, carryOver, tail) => {
-      if(node1 === null && node2 === null) {
-          return;
-      }
-      if(node2 === null) {
-          tail.next = new ListNode(node1.val)
-          addCur(node1.next, node2, 0, tail.next);
-      }
-      if(node1 === null) {
-          tail.next = new ListNode(node2.val)
-          addCur(node1, node2.next, 0, tail.next);
-      }
-      if(head === undefined) {
-          let sum = node1.val + node2.val;
-          if(sum > 9) {
-              head = new ListNode(sum - 10);
-              addCur(node1.next, node2.next, 1, head);
-          } else {
-              head = new ListNode(sum);
-              addCur(node1.next, node2.next, 0, head);
-          }
+  let node1 = l1;
+  let node2 = l2;
+  let pointer = new ListNode(0);
+  let head = pointer;
+  let carry = 0;
+  
+  while(node1 !== null || node2 !== null) {
+      let val1 = node1 === null ? 0 : node1.val;
+      let val2 = node2 === null ? 0 : node2.val;
+      let sum = val1 + val2 + carry;
+      if(sum > 9) {
+          carry = 1;
+          sum -= 10;
       } else {
-          let sum = node1.val + node2.val + carryOver;
-          if(sum > 9) {
-              tail.next = new ListNode(sum - 10);
-              addCur(node1.next, node2.next, 1, tail.next);
-          } else {
-              tail.next = new ListNode(sum);
-              addCur(node1.next, node2.next, 0, tail.next);
-          }
+          carry = 0;
       }
       
+      pointer.next = new ListNode(sum);
+      pointer = pointer.next;
+      
+      node1 = node1 === null ? null : node1.next;
+      node2 = node2 === null ? null : node2.next;
   }
-  addCur(l1, l2, 0);
+  if(carry === 1) {
+      pointer.next = new ListNode(1);
+  }
   
-  return head;
+  return head.next;
 };
