@@ -1,7 +1,7 @@
-/**
- * @param {number[]} nums
- * @return {number}
- */
+// /**
+//  * @param {number[]} nums
+//  * @return {number}
+//  */
 var findUnsortedSubarray = function(nums) {
     let l = nums.length-1, r = 0;
     let min = nums[l], max = nums[r];
