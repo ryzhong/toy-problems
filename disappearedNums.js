@@ -22,3 +22,20 @@ var findDisappearedNumbers = function(nums) {
     }
     return arr.filter((e) => e !== null);
 };
+
+//98%
+var findDisappearedNumbers = function(nums) {
+    let res = []
+    nums.forEach((e, index, arr) => {
+        let num = Math.abs(arr[index]) - 1;
+        if(arr[num] > 0) {
+            arr[num] *= -1;
+        }
+    })
+    nums.forEach((e, index) => {
+        if(e > 0) {
+            res.push(index + 1);
+        }
+    })
+    return res
+};
