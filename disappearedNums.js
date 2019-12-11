@@ -12,3 +12,13 @@ var findDisappearedNumbers = function(nums) {
     // console.log(result);
     return result;
 };
+
+//42%
+var findDisappearedNumbers = function(nums) {
+    let arr = Array.from(Array(nums.length), (e, i) => i + 1)
+    // console.log(arr);
+    for(let num of nums) {
+        arr[num - 1] = null;
+    }
+    return arr.filter((e) => e !== null);
+};
