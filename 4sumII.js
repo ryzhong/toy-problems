@@ -5,6 +5,11 @@
 //  * @param {number[]} D
 //  * @return {number}
 //  */
+
+//tried doing this with objects instead of a
+//hashmap and it became much slower 750+ms 
+//compared to 150~ms
+
 var fourSumCount = function(A, B, C, D) {
     let result = 0;
     
