@@ -3,14 +3,17 @@
 //  * @param {number[]} nums2
 //  * @return {number[]}
 //  */
-
-//test
 var intersect = function(nums1, nums2) {
     let result = [];
-    nums1.forEach( (ele) => {
-        for(let i = 0; i < nums2.length; i++) {
-            if(ele === nums2[i]) {
-                result.push(ele);
+    let shortest = nums1.length <= nums2.length ? nums1 : nums2;
+    let longest = nums1.length <= nums2.length ? nums2 : nums1;
+    console.log( shortest, longest)
+    shortest.forEach( (ele, index) => {
+        for(let i = 0; i < longest.length; i++) {
+            if(ele === longest[i]) {
+                result.push(shortest[index]);
+                longest[i] = null;
+                break;
             }
         }
     })
