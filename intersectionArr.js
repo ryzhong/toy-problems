@@ -21,6 +21,7 @@ var intersect = function(nums1, nums2) {
 };
 
 // 86%
+//O(n^2)?
 
 var intersect = function(nums1, nums2) {
     let result = [];
@@ -38,6 +39,7 @@ var intersect = function(nums1, nums2) {
 };
 
 // 86% similar to other solution
+// O(n+m)?
 
 var intersect = function(nums1, nums2) {
     let result = [];
