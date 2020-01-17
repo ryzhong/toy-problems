@@ -20,7 +20,8 @@ var intersect = function(nums1, nums2) {
     return result;
 };
 
-// 21%
+// 86%
+//O(n^2)?
 
 var intersect = function(nums1, nums2) {
     let result = [];
@@ -34,5 +35,29 @@ var intersect = function(nums1, nums2) {
             longest[contains] = null;
         }
     })
+    return result;
+};
+
+// 86% similar to other solution
+// O(n+m)?
+
+var intersect = function(nums1, nums2) {
+    let result = [];
+    let map = new Map();
+    nums1.forEach((num) => {
+        if(map.get(num)) {
+            map.set(num, map.get(num) + 1)
+        } else {
+            map.set(num, 1)
+        }
+    })
+    
+    nums2.forEach((num2) => {
+        if(map.get(num2) > 0) {
+            result.push(num2);
+            map.set(num2, map.get(num2) - 1);
+        }
+    })
+    
     return result;
 };
