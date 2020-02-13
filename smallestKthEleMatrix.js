@@ -29,3 +29,9 @@ var kthSmallest = function(matrix, k) {
         matrix[smallestRow] = matrix[smallestRow].slice(1);
     }
 }
+
+//45%
+
+var kthSmallest = function(matrix, k) {
+    return [].concat(...matrix).sort((a,b) => a-b)[k-1];
+}
